@@ -3,6 +3,12 @@ import axios from 'axios'
 import { DishList } from './components/DishList'
 import './App.css'
 
+//THINGS TO IMPLEMENT
+//Dark mode (cool showcase for design)
+//Setup different categories, areas (cuisines), use of different ingredients, etc.
+//Better CSS design and styling (modern design)
+//introduce useMemo and useCallback if we need to avoid re-rendering or if the app has expensive calculations.
+
 function App() {
   const [prompt, setPrompt] = useState<string>('') //Get user prompt
   const [dishes, setDishes] = useState<any[]>([]) //Get the dishes based on user prompt
@@ -40,7 +46,8 @@ function App() {
       </form>
       {loading && <p>Loading dish(es)...</p>}
       {error && <p>{error}</p>}
-      <DishList dishes={dishes}/>
+
+      {dishes.length > 0 && <DishList dishes={dishes}/>} {/*Renders the list of dishes only if its not an empty array*/}
     </div>
   )
 }
