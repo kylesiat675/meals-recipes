@@ -5,9 +5,10 @@ import './App.css'
 
 //THINGS TO IMPLEMENT
 //Dark mode (cool showcase for design)
-//Setup different categories, areas (cuisines), use of different ingredients, etc.
+//Setup different categories, areas (cuisines), use of different ingredients, etc. (navbar?)
 //Better CSS design and styling (modern design)
-//introduce useMemo and useCallback if we need to avoid re-rendering or if the app has expensive calculations.
+//Introduce useMemo and useCallback if we need to avoid re-rendering or if the app has expensive calculations.
+//Maybe a reactive search bar (costly and frequent API calls)
 
 function App() {
   const [prompt, setPrompt] = useState<string>('') //Get user prompt
