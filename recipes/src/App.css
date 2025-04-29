@@ -32,3 +32,13 @@
   width: 240px;
   height: auto;
 }
+
+.nav-item{
+  color: white;
+}
+.nav-item:hover{
+  color: rgb(70, 157, 113);
+}
+.nav-item:focus{
+  color: rgb(28, 217, 123);
+}

@@ -1,7 +1,13 @@
-import { useState } from 'react'
-import axios from 'axios'
-import { DishList } from './components/DishList'
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route,
+  Link,
+  useNavigate,
+  Outlet,
+} from "react-router-dom";
 import './App.css'
+import { GetDishes } from './components/GetDishes';
 
 //THINGS TO IMPLEMENT
 //Dark mode (cool showcase for design)
@@ -11,47 +17,32 @@ import './App.css'
 //Maybe a reactive search bar (costly and frequent API calls)
 
 function App() {
-  const [prompt, setPrompt] = useState<string>('') //Get user prompt
-  const [dishes, setDishes] = useState<any[]>([]) //Get the dishes based on user prompt
-  const [loading, setLoading] = useState(false) //Loading state
-  const [error, setError] = useState<string | null>(null) //Error state
+// Home Page Component
+const Home = () => {
+  return (
+      <div className="flex items-center justify-center">
+          <h2 className="text-2xl">Home Page</h2>
+      </div>
+  );
+};
 
-  const fetchDishes = async (e: any) => {
-    e.preventDefault() //Prevents the default submission when the button is clicked
-    setLoading(true) //Sets loading state to true
-    setError(null) //Sets error state to null (no error)
-    try{
-      const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/search.php?s=${prompt}`) //Fetches dishes that has the prompt in the name
-      if(res.data.meals){
-        setDishes(res.data.meals) //Sets the dishes state to the response data with the dishes
-      }else{
-        setDishes([]) //Sets dishes to empty array
-        setError('No dishes were found.')
-      }
-    }catch(err){
-      setError('An error occured while fetching the dishes.')
-      console.log(err)
-    }finally{
-      setLoading(false) // Sets loading to false
-    }
-  }
 
   return (
-    <div className='w-full flex flex-col justify-center items-center gap-8'>
-      <h1>Dish Finder</h1>
-      <form onSubmit={fetchDishes}>
-        <div className="flex flex-col justify-center items-center gap-2.5">
-          <input type="text" placeholder='Enter a dish name' value={prompt} onChange={(e) => setPrompt(e.target.value)} 
-          className="w-full h-full text-lg px-4 py-2 rounded-2xl border-[rgb(46,46,46)] border-[3px]"/>
-          <button type='submit'>Search</button>
-        </div>
-      </form>
-      {loading && <p>Loading dish(es)...</p>}
-      {error && <p>{error}</p>}
-
-      {dishes.length > 0 && <DishList dishes={dishes}/>} {/*Renders the list of dishes only if its not an empty array*/}
-    </div>
-  )
+    <Router>
+      <nav className="flex justify-center">
+          <ul className="flex flex-row justify-center items-center gap-10 text-large py-4 border-2 border-white rounded-[10px] w-full mb-4">
+              <li><Link to="/" className="nav-item">Home</Link></li>
+              <li><Link to="/dishes" className="nav-item">Dishes</Link></li>
+              <li><Link to="/ingredients" className="nav-item">Ingredients</Link></li>
+              <li><Link to="/cuisine" className="nav-item">Cuisine</Link></li>
+          </ul>
+      </nav>
+      <Routes>
+          <Route path="/" element={<Home />} />
+            <Route path="/dishes" element={<GetDishes/>}/>
+      </Routes>
+    </Router>
+  );
 }
 
 export default App
