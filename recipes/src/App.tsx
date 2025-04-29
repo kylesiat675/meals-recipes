@@ -37,11 +37,12 @@ function App() {
   }
 
   return (
-    <div className='dishes'>
+    <div className='w-full flex flex-col justify-center items-center gap-8'>
       <h1>Dish Finder</h1>
       <form onSubmit={fetchDishes}>
-        <div className="input-button">
-          <input type="text" placeholder='Enter a dish name' value={prompt} onChange={(e) => setPrompt(e.target.value)} />
+        <div className="flex flex-col justify-center items-center gap-2.5">
+          <input type="text" placeholder='Enter a dish name' value={prompt} onChange={(e) => setPrompt(e.target.value)} 
+          className="w-full h-full text-lg px-4 py-2 rounded-2xl border-[rgb(46,46,46)] border-[3px]"/>
           <button type='submit'>Search</button>
         </div>
       </form>
