@@ -1,13 +1,10 @@
-import {
-  BrowserRouter as Router,
-  Routes,
-  Route,
-  Link,
-  useNavigate,
-  Outlet,
-} from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route, NavLink } from "react-router-dom";
 import './App.css'
+import { useState } from 'react'
 import { GetDishes } from './components/GetDishes';
+import { Ingredients } from "./components/Ingredients";
+import { Cuisines } from "./components/Cuisines";
+import { Category } from "./components/Category";
 
 //THINGS TO IMPLEMENT
 //Dark mode (cool showcase for design)
@@ -16,30 +13,69 @@ import { GetDishes } from './components/GetDishes';
 //Introduce useMemo and useCallback if we need to avoid re-rendering or if the app has expensive calculations.
 //Maybe a reactive search bar (costly and frequent API calls)
 
+//STATE MANAGEMENT
+//PLACE ALL THE IMPORTANT PROPS IN APP.TSX SO IT IS EASY TO MANAGE THE STATE FOR EACH CONSTANT
 function App() {
-// Home Page Component
-const Home = () => {
-  return (
-      <div className="flex items-center justify-center">
-          <h2 className="text-2xl">Home Page</h2>
-      </div>
-  );
-};
+  const [prompt, setPrompt] = useState<string>('') //Get user prompt
+  const [dishes, setDishes] = useState<any[]>([]) //Get the dishes based on user prompt
+  // Home Page Component
+  const Home = () => {
+    return (
+        <div className="flex items-center justify-center flex-col gap-4">
+            <h1 className="font-bold">Home Page</h1>
+            <div className="text-2xl">304 Different recipes to choose from!</div>
+        </div>
+    );
+  };
 
-
+  const resetValues = () => {
+    setDishes([]);
+    setPrompt('')
+  }
   return (
     <Router>
       <nav className="flex justify-center">
-          <ul className="flex flex-row justify-center items-center gap-10 text-large py-4 border-2 border-white rounded-[10px] w-full mb-4">
-              <li><Link to="/" className="nav-item">Home</Link></li>
-              <li><Link to="/dishes" className="nav-item">Dishes</Link></li>
-              <li><Link to="/ingredients" className="nav-item">Ingredients</Link></li>
-              <li><Link to="/cuisine" className="nav-item">Cuisine</Link></li>
+          <ul className="flex flex-row justify-between px-2 items-center md:text-xl text-sm py-4 border-2 border-white rounded-[10px] mb-4 md:w-1/2 w-full">
+              <li><NavLink to="/" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Home</NavLink></li>
+              <li><NavLink to="/dishes" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Dishes</NavLink></li>
+              <li><NavLink to="/ingredients" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Ingredients</NavLink></li>
+              <li><NavLink to="/cuisines" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Cuisines</NavLink></li>
+              <li><NavLink to="/category" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Category</NavLink></li>
           </ul>
       </nav>
       <Routes>
           <Route path="/" element={<Home />} />
-            <Route path="/dishes" element={<GetDishes/>}/>
+            <Route path="/dishes" element=
+            {<GetDishes
+              prompt={prompt}
+              setPrompt={setPrompt}
+              dishes={dishes}
+              setDishes={setDishes}
+            />}/>
+
+            <Route path="/ingredients" element=
+            {<Ingredients
+              prompt={prompt}
+              setPrompt={setPrompt}
+              dishes={dishes}
+              setDishes={setDishes}
+            />}/>
+
+            <Route path="/cuisines" element=
+            {<Cuisines
+              prompt={prompt}
+              setPrompt={setPrompt}
+              dishes={dishes}
+              setDishes={setDishes}
+            />}/>
+
+            <Route path="/category" element=
+            {<Category
+              prompt={prompt}
+              setPrompt={setPrompt}
+              dishes={dishes}
+              setDishes={setDishes}
+            />}/>
       </Routes>
     </Router>
   );

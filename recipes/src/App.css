@@ -1,44 +1,11 @@
-
-.dish-list{
-  display: flex;
-  flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  align-items: center;
-  margin: 20px;
-  padding: 20px;
-  background-color: rgb(46, 46, 46);
-}
-
-.dish-item{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-.dish-item-card{
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-.dish-image{
-  width: 15em;
-  height: auto;
-  border-radius: 10%;
-}
-.dish-name, .dish-area, .dish-yt, .dish-src{
-  text-align: center;
-  margin: 0px;
-  width: 240px;
-  height: auto;
-}
-
-.nav-item{
+.link {
   color: white;
 }
-.nav-item:hover{
-  color: rgb(70, 157, 113);
+.link:hover{
+  color:rgb(11,129,74)
 }
-.nav-item:focus{
-  color: rgb(28, 217, 123);
+
+.active-link, .active-link:hover{
+  color: rgb(34,185,114); /* Keeps the color when active */
+  font-weight: bold;
 }
