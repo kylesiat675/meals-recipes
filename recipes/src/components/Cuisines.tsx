@@ -2,6 +2,7 @@ import { DishList } from './DishList'
 import { useState, useEffect } from 'react'
 import axios from 'axios'
 
+//Props to pass into Cuisines
 type CuisinesProps ={
     prompt: string;
     setPrompt: (value: string) => void;

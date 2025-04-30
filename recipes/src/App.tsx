@@ -18,7 +18,8 @@ import { Category } from "./components/Category";
 function App() {
   const [prompt, setPrompt] = useState<string>('') //Get user prompt
   const [dishes, setDishes] = useState<any[]>([]) //Get the dishes based on user prompt
-  // Home Page Component
+
+  // Home Page
   const Home = () => {
     return (
         <div className="flex items-center justify-center flex-col gap-4">
@@ -28,6 +29,7 @@ function App() {
     );
   };
 
+  //Resets the values of dishes and prompt when traversing to a new link
   const resetValues = () => {
     setDishes([]);
     setPrompt('')
@@ -43,6 +45,7 @@ function App() {
               <li><NavLink to="/category" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Category</NavLink></li>
           </ul>
       </nav>
+      {/*Set up routes and router for each component */}
       <Routes>
           <Route path="/" element={<Home />} />
             <Route path="/dishes" element=

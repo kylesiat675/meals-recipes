@@ -2,6 +2,7 @@ import { DishList } from './DishList'
 import { useState } from 'react'
 import axios from 'axios'
 
+//Props to pass into GetDishes
 type GetDishesProps ={
     prompt: string;
     setPrompt: (value: string) => void;
