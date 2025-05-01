@@ -1,3 +1,4 @@
+//Unused component
 import { DishList } from './DishList'
 import { useState } from 'react'
 import axios from 'axios'

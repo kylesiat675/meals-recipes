@@ -1,6 +1,7 @@
 import { DishList } from './DishList'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import axios from 'axios'
+import Select from 'react-select'
 
 //Props to pass into Ingredients
 type IngredientsProps ={
@@ -11,11 +12,11 @@ type IngredientsProps ={
 }
 
 export function Ingredients({prompt, setPrompt, dishes, setDishes}: IngredientsProps) {
+    const [ingredientList, setIngredientList] = useState<any[]>([]);
     const [loading, setLoading] = useState(false) //Loading state
     const [error, setError] = useState<string | null>(null) //Error state
 
-    const fetchDishes = async (e: any) => {
-        e.preventDefault() //Prevents the default submission when the button is clicked
+    const fetchDishes = async () => {
         setLoading(true) //Sets loading state to true
         setError(null) //Sets error state to null (no error)
         try{
@@ -33,17 +34,33 @@ export function Ingredients({prompt, setPrompt, dishes, setDishes}: IngredientsP
             setLoading(false) // Sets loading to false
         }
     }
+    //Whenever prompt changes, we fetch the new dishes
+    useEffect(() => {
+        if(prompt) fetchDishes();
+    }, [prompt]);
+
+    useEffect(() => {
+        const fetchIngredientList = async () => {
+            const res = await axios.get('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
+                const list = res.data.meals.map((dish:any) =>({
+                    value: dish.strIngredient,
+                    label: dish.strIngredient,
+                }));
+                setIngredientList(list)
+            };
+            fetchIngredientList();
+    }, []);
+
 
     return(
         <div className='w-full flex flex-col justify-center items-center gap-8'>
             <h1>Ingredients</h1>
-            <form onSubmit={fetchDishes}>
-                <div className="flex flex-col justify-center items-center gap-2.5">
-                <input type="text" placeholder='Enter an ingredient' value={prompt} onChange={(e) => setPrompt(e.target.value)}
-                className="w-full h-full text-lg px-4 py-2 rounded-2xl border-[rgb(46,46,46)] border-[3px]"/>
-                <button type='submit'>Search</button>
-                </div>
-            </form>
+            <Select
+            options={ingredientList}
+            className="select text-black h-auto w-[240px]"
+            onChange={(e:any)=>setPrompt(e.value)}
+            isSearchable
+            />
             {loading && <p>Loading dish(es)...</p>}
             {error && <p>{error}</p>}
 
