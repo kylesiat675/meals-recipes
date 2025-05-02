@@ -48,26 +48,19 @@ export function DishItemCard({ dish }: {dish: any}){
 
             {isModalOpen && dishInfo.length > 0 && (
                 <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)]">
-                    <div className="bg-[rgb(0,0,0)] p-6 rounded max-w-3/4 w-full relative">
-                        <div className="flex flex-col items-center justify-center py-2 h-auto gap-6 rounded-2xl">
-                            <img src={dishInfo[0].strMealThumb} className="w-[15em] h-auto rounded-[10%]"/>
-
+                    <div className="bg-[rgb(0,0,0)] p-6 rounded lg:w-1/2 sm:w-[90%] sm:h-[90%] lg:h-3/4 relative">
+                        <div className="flex flex-col items-center justify-center py-2 gap-6 rounded-2xl w-full h-full overflow-y-auto">
+                            <h2>Dish Name: {dishInfo[0].strMeal}</h2>
+                            <div className="text-white">Dish ID: {dishInfo[0].idMeal}</div>
                             {videoLink ? (
-                                <iframe width="640" height="480" src={videoLink} />
+                                <iframe className="w-full h-full py-8" src={videoLink} allowFullScreen />
                                 ) : (
                                 <p>No YouTube link</p>
                             )}
-                            
-                            <div>
-                            Dish Name: {dishInfo[0].strMeal}
-                            </div>
-                            <div className="text-white">
-                                Dish ID: {dishInfo[0].idMeal}
-                            </div>
                         </div>
                         <button
                         onClick={closeModal}
-                        className="bg-blue-500 text-white px-4 py-2 rounded absolute bottom-3 right-3"
+                        className="bg-blue-500 text-white px-4 py-2 rounded absolute top-3 right-3"
                         >
                         Close
                         </button>
