@@ -36,7 +36,7 @@ function App() {
   return (
     <Router>
       <nav className="flex justify-center">
-          <ul className="flex flex-row justify-between px-2 items-center md:text-lg text-sm py-4 border-2 border-white rounded-[10px] mb-4 md:w-1/2 w-full">
+          <ul className="flex flex-row justify-between px-8 items-center md:text-lg text-sm py-4 border-2 border-white rounded-[10px] mb-4 md:w-1/2 w-full">
               <li><NavLink to="/" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Home</NavLink></li>
               <li><NavLink to="/ingredients" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Ingredients</NavLink></li>
               <li><NavLink to="/cuisines" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Cuisines</NavLink></li>
