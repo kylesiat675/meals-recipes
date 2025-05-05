@@ -6,6 +6,9 @@ import { useState } from "react";
 // - Fix mobile responsiveness and sideways for mobiles (sizing)
 // - STILL NEED TO FIX CSS
 
+//Agenda - May 05, 2025
+// - Fix dish item card modal sizing (for pc and mobile)
+// - Add more information inside the modal (ingredients, instructions, etc...)
 
 //Takes a prompt called dish from the user and displays the dish name and image in a card format
 export function DishItemCard({ dish }: {dish: any}){
