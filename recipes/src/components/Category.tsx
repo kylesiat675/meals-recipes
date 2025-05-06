@@ -39,6 +39,7 @@ export function Category({prompt, setPrompt, dishes, setDishes}: CategoryProps) 
         if(prompt) fetchDishes();
     }, [prompt]);
 
+    //Gets all the categories available in the API
     useEffect(() => {
         const fetchCategory = async () => {
             const response = await axios.get('https://www.themealdb.com/api/json/v1/1/list.php?c=list');

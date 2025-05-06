@@ -39,6 +39,7 @@ export function Ingredients({prompt, setPrompt, dishes, setDishes}: IngredientsP
         if(prompt) fetchDishes();
     }, [prompt]);
 
+    //Gets all available ingredient list in the API
     useEffect(() => {
         const fetchIngredientList = async () => {
             const res = await axios.get('https://www.themealdb.com/api/json/v1/1/list.php?i=list');
@@ -50,7 +51,6 @@ export function Ingredients({prompt, setPrompt, dishes, setDishes}: IngredientsP
             };
             fetchIngredientList();
     }, []);
-
 
     return(
         <div className='w-full flex flex-col justify-center items-center gap-8'>

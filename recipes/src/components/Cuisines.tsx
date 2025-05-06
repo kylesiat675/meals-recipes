@@ -34,8 +34,7 @@ export function Cuisines({prompt, setPrompt, dishes, setDishes}: CuisinesProps) 
         }
     };
 
-    
-
+    //Gets all cuisines available in the API
     useEffect(() => {
         const fetchCuisines = async () => {
             const response = await axios.get('https://www.themealdb.com/api/json/v1/1/list.php?a=list');
@@ -48,18 +47,6 @@ export function Cuisines({prompt, setPrompt, dishes, setDishes}: CuisinesProps) 
     useEffect(() => {
         if(prompt) fetchDishes();
     }, [prompt]);
-
-    useEffect(()=>{
-        if(dishes.length>0){
-            //Set timer to make the scrolling smoother
-            const timer = setTimeout(() => {
-                const dishListSection = document.querySelector(".dish-list");
-                dishListSection?.scrollIntoView({ behavior: 'smooth' });
-            }, 100);
-
-            return () => clearTimeout(timer);
-        }
-    }, [dishes])
 
     return(
         <div className='w-full flex flex-col justify-center items-center gap-8'>
