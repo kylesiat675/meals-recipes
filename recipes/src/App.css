@@ -1,7 +1,6 @@
 /*NavLink CSS*/
 .link {
   color: #300707;
-  font-size: large;
   font-weight: bold;
 }
 .link:hover{
@@ -10,7 +9,6 @@
 
 .active-link, .active-link:hover{
   color: #D64541; /* Keeps the color when active */
-  font-size: larger;
   font-weight: bold;
 }
 
@@ -28,7 +26,6 @@ button {
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
-  font-weight: 500;
   font-family: inherit;
   background-color: #5D4037;
   cursor: pointer;
@@ -36,11 +33,13 @@ button {
   color: white;
 }
 button:hover {
-  border-color: #a2a5df;
   background-color: #F9E79F;
   color:black;
 }
 button:focus,
 button:focus-visible {
-  outline: 4px solid rgb(10, 1, 78);
+  outline: 2px solid rgb(10, 1, 78);
+  background-color: #F9E79F;
+  color:black;
+  font-weight: 700;
 }

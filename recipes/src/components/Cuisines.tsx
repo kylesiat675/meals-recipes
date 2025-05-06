@@ -34,10 +34,7 @@ export function Cuisines({prompt, setPrompt, dishes, setDishes}: CuisinesProps) 
         }
     };
 
-    //Whenever prompt changes, we fetch the new dishes
-    useEffect(() => {
-        if(prompt) fetchDishes();
-    }, [prompt]);
+    
 
     useEffect(() => {
         const fetchCuisines = async () => {
@@ -47,13 +44,30 @@ export function Cuisines({prompt, setPrompt, dishes, setDishes}: CuisinesProps) 
         fetchCuisines();
     }, []);
 
+    //Whenever prompt changes, we fetch the new dishes
+    useEffect(() => {
+        if(prompt) fetchDishes();
+    }, [prompt]);
+
+    useEffect(()=>{
+        if(dishes.length>0){
+            //Set timer to make the scrolling smoother
+            const timer = setTimeout(() => {
+                const dishListSection = document.querySelector(".dish-list");
+                dishListSection?.scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+
+            return () => clearTimeout(timer);
+        }
+    }, [dishes])
+
     return(
         <div className='w-full flex flex-col justify-center items-center gap-8'>
             <h1 className='text-3xl font-bold'>Cuisines</h1>
-            <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-2 justify-items-center'>
+            <div className='grid grid-cols-2 sm:grid-cols-4 md:grid-cols-8 gap-2 justify-items-center'>
                 {cuisines.map((cuisine, index) => (
                     <button className='
-                    p-2 w-full text-center rounded-lg font-bold'
+                    w-full text-center rounded-lg'
                     key={index}
                     onClick={(e:any)=>setPrompt(e.currentTarget.textContent)}
                     >{cuisine.strArea}</button>
