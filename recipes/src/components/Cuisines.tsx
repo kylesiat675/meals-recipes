@@ -49,7 +49,7 @@ export function Cuisines({prompt, setPrompt, dishes, setDishes}: CuisinesProps) 
 
     return(
         <div className='w-full flex flex-col justify-center items-center gap-8'>
-            <h1>Cuisines</h1>
+            <h1 className='text-3xl font-bold'>Cuisines</h1>
             <div className='grid grid-cols-3 sm:grid-cols-4 md:grid-cols-8 gap-2 justify-items-center'>
                 {cuisines.map((cuisine, index) => (
                     <button className='

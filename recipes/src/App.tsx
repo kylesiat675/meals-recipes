@@ -22,7 +22,7 @@ function App() {
   const Home = () => {
     return (
         <div className="flex items-center justify-center flex-col gap-4">
-            <h1 className="font-bold">Home Page</h1>
+            <h1 className="text-3xl font-bold">Home Page</h1>
             <div className="text-2xl">304 Different recipes to choose from!</div>
         </div>
     );
@@ -35,8 +35,8 @@ function App() {
   }
   return (
     <Router>
-      <nav className="flex justify-center">
-          <ul className="flex flex-row justify-between px-8 items-center md:text-lg text-sm py-4 border-2 border-white rounded-[10px] mb-4 md:w-1/2 w-full">
+      <nav className="flex justify-center mt-4">
+          <ul className="flex flex-row justify-between px-8 items-center md:text-lg text-sm pt-4 border-b-3 border-black mb-8 md:w-1/2 w-full">
               <li><NavLink to="/" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Home</NavLink></li>
               <li><NavLink to="/ingredients" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Ingredients</NavLink></li>
               <li><NavLink to="/cuisines" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Cuisines</NavLink></li>

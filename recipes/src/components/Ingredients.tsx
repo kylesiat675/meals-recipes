@@ -54,7 +54,7 @@ export function Ingredients({prompt, setPrompt, dishes, setDishes}: IngredientsP
 
     return(
         <div className='w-full flex flex-col justify-center items-center gap-8'>
-            <h1>Ingredients</h1>
+            <h1 className='text-3xl font-bold'>Ingredients</h1>
             <Select
             options={ingredientList}
             className="select text-black h-auto w-[240px]"

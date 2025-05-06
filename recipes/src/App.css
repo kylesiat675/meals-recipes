@@ -1,12 +1,46 @@
 /*NavLink CSS*/
 .link {
-  color: white;
+  color: #300707;
+  font-size: large;
+  font-weight: bold;
 }
 .link:hover{
-  color:rgb(11,129,74)
+  color:#D64541;
 }
 
 .active-link, .active-link:hover{
-  color: rgb(34,185,114); /* Keeps the color when active */
+  color: #D64541; /* Keeps the color when active */
+  font-size: larger;
   font-weight: bold;
+}
+
+a {
+  font-weight: 500;
+  color: #E67E22;
+  text-decoration: inherit;
+}
+a:hover {
+  color: #D64541;
+}
+
+button {
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0.6em 1.2em;
+  font-size: 1em;
+  font-weight: 500;
+  font-family: inherit;
+  background-color: #5D4037;
+  cursor: pointer;
+  transition: border-color 0.25s;
+  color: white;
+}
+button:hover {
+  border-color: #a2a5df;
+  background-color: #F9E79F;
+  color:black;
+}
+button:focus,
+button:focus-visible {
+  outline: 4px solid rgb(10, 1, 78);
 }

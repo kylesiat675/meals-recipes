@@ -64,10 +64,10 @@ export function DishItemCard({ dish }: {dish: any}){
     },[dishInfo])
     //Make the image and name clickable so a dish item modal opens with all the information and links to the dish
     return (
-        <div className="flex flex-col items-center justify-center">
+        <div className="flex flex-col items-center justify-center border-1 border-solid bg-[#f7ead1] border-[#e3b04c] shadow-md rounded-[16px]">
             <a onClick={handleClick} className="cursor-pointer">
-                <img src={dish.strMealThumb} alt={dish.strMeal} className="w-[15em] h-auto rounded-[10%]" />
-                <h2 className="text-center m-0 w-[240px] h-auto">{dish.strMeal}</h2>
+                <img src={dish.strMealThumb} alt={dish.strMeal} className="w-[15em] h-auto rounded-t-[16px]" />
+                <h2 className="text-center my-2 w-[240px] h-auto">{dish.strMeal}</h2>
             </a>
             {isModalOpen && dishInfo.length > 0 && (
                 <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)]" onClick={closeModal}>

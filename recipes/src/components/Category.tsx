@@ -49,7 +49,7 @@ export function Category({prompt, setPrompt, dishes, setDishes}: CategoryProps) 
 
     return(
         <div className='w-full flex flex-col justify-center items-center gap-8'>
-            <h1>Categories</h1>
+            <h1 className='text-3xl font-bold'>Categories</h1>
             <div className='grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 justify-items-center'>
                 {categories.map((category, index) => (
                     <button className='
