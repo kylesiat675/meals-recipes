@@ -21,7 +21,7 @@ function App() {
   // Home Page
   const Home = () => {
     return (
-        <div className="flex items-center justify-center flex-col gap-4">
+        <div className="flex items-center justify-center flex-col gap-4 px-2 text-[#3A0519]">
             <h1 className="text-3xl font-bold">Home Page</h1>
             <div className="text-2xl">304 Different recipes to choose from!</div>
         </div>
@@ -36,7 +36,7 @@ function App() {
   return (
     <Router>
       <nav className="flex justify-center mt-4">
-          <ul className="flex flex-row justify-between px-8 items-center md:text-xl text-md pt-4 border-b-3 border-black mb-8 md:w-1/2 w-full">
+          <ul className="flex flex-row justify-between px-8 items-center md:text-xl text-md pt-2 pb-1 border-b-3 border-black mb-8 md:w-1/2 w-full">
               <li><NavLink to="/" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Home</NavLink></li>
               <li><NavLink to="/ingredients" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Ingredients</NavLink></li>
               <li><NavLink to="/cuisines" className={({ isActive }) => (isActive ? 'active-link' : 'link')} onClick={resetValues}>Cuisines</NavLink></li>

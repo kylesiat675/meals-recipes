@@ -50,11 +50,11 @@ export function Category({prompt, setPrompt, dishes, setDishes}: CategoryProps) 
 
     return(
         <div className='w-full flex flex-col justify-center items-center gap-8'>
-            <h1 className='text-3xl font-bold'>Categories</h1>
+            <h1 className='text-3xl font-bold text-[#3A0519]'>Categories</h1>
             <div className='grid grid-cols-2 sm:grid-cols-4 md:grid-cols-6 gap-2 justify-items-center'>
                 {categories.map((category, index) => (
                     <button className='
-                    p-2 w-full text-center rounded-lg font-bold'
+                    w-full text-center rounded-lg px-[1.2rem] py-[0.6rem]'
                     key={index}
                     onClick={(e:any)=>setPrompt(e.currentTarget.textContent)}
                     >{category.strCategory}</button>

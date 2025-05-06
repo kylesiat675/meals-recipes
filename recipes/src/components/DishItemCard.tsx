@@ -69,36 +69,44 @@ export function DishItemCard({ dish }: {dish: any}){
                 <img src={dish.strMealThumb} alt={dish.strMeal} className="w-[15em] h-auto rounded-t-[16px]" />
                 <h2 className="text-center my-2 w-[240px] h-auto">{dish.strMeal}</h2>
             </a>
+            {/* Dish Item Modal */}
             {isModalOpen && dishInfo.length > 0 && (
                 <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)]" onClick={closeModal}>
-                    <div className="bg-[rgb(0,0,0)] p-6 rounded relative flex w-3/4 h-3/4">
-                        <div className="w-full h-full bg-black overflow-hidden rounded-lg flex flex-col">
-                            {/* Scrollable content */}
-                            <div className="overflow-y-auto px-4 py-2 text-white flex flex-col items-center gap-2 h-full m-0">
-                                <div className="text-4xl font-bold text-center flex-shrink-0">{dishInfo[0].strMeal}</div>
-                                <div className="w-4/5 h-7/8 flex-shrink-0">
+                    <div className="bg-[#e2d8bf] p-6 relative flex lg:w-3/4 lg:h-3/4 w-[95vw] h-[80vh] rounded-[16px] py-12">
+                        <div className="w-full h-full overflow-hidden flex flex-col">
+                            <div className="overflow-y-auto pl-1 pr-2 py-1 text-white flex flex-col items-center gap-2 h-full m-0" onClick={(e) => e.stopPropagation()}>
+                                <div className="text-3xl font-bold text-center flex-shrink-0 text-[#3A0519]">{dishInfo[0].strMeal}</div>
+                                <div className="w-full h-3/5 flex-shrink-0 flex items-center justify-center">
                                     {videoLink ? (
                                     <iframe className="w-full h-full rounded-2xl" src={videoLink} allowFullScreen />
                                     ) : (
-                                    <p className="text-[red]">No YouTube link available for this dish.</p>
+                                    <p className="text-[red] text-2xl">No YouTube link available for this dish.</p>
                                     )}
                                 </div>
                                 <a className="text-xl text-blue-400 flex-shrink-0" href={dishInfo[0].strYoutube} target="_blank" rel="noopener noreferrer">
                                     YouTube Link
                                 </a>
-                                <div className="inline-block text-left mt-10 mb-10">
-                                    <div className="text-xl font-bold">Ingredient List:</div>
-                                    {ingredientList.map((ing, index) => (
-                                    <div key={index}>{ing}</div>
-                                    ))}
+                                <div className="text-2xl font-bold text-[#3A0519] roboto-mono my-4">Ingredient List</div>
+                                <div className="w-full flex items-center justify-center bg-[#e8e5dc] p-8 roboto-mono h-full">
+                                    <div className="text-left text-black" >
+                                        {ingredientList.map((ing, index) => (
+                                        <div key={index} className="text-xl">{ing}</div>
+                                        ))}
+                                    </div>
+                                </div>
+                                <div className="text-xl font-bold text-[#3A0519] roboto-mono my-4">Cooking Instructions:</div>
+                                <div className="text-black w-full bg-[#e8e5dc] p-8 roboto-mono">
+                                    {dishInfo[0].strInstructions}
                                 </div>
                                 <a href={dishInfo[0].strSource} className="text-xl text-blue-400 flex-shrink-0" target="_blank" rel="noopener noreferrer">
-                                    Learn More...
+                                    Click here to learn more...
                                 </a>
                             </div>
                         </div>
-                    <button onClick={closeModal} className="bg-blue-500 text-white px-4 py-2 rounded absolute top-3 left-3">
-                        Close
+                    {/* Button to close the modal */}
+                    <button onClick={closeModal}
+                    className="bg-blue-500 text-white text-center absolute top-3 right-3 px-2.5 py-1">
+                        X
                     </button>
                     </div>
                 </div>

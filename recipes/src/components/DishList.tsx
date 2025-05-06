@@ -16,7 +16,7 @@ export function DishList({ dishes }: { dishes: any[] }) {
             }
         }, [dishes])
     return (
-        <div className="flex flex-wrap gap-5 justify-center items-center m-5 p-5 bg-[#f3e2cc] rounded-[16px] dish-list">
+        <div className="flex flex-wrap gap-5 justify-center items-center m-5 p-5 bg-[#f7e3c8] rounded-[16px] dish-list">
             {dishes.map((dish) => (
                 <DishItemCard key={dish.idMeal} dish={dish} />
             ))}
