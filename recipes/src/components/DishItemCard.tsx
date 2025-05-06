@@ -21,6 +21,7 @@ export function DishItemCard({ dish }: {dish: any}){
         try{
             //Fetches dishes that has the prompt in the name
             const res = await axios.get(`https://www.themealdb.com/api/json/v1/1/lookup.php?i=${id}`)
+            console.log(res.data.meals)
             if(res.data.meals){
                 //Fixes the youtube URL link to add embed to the URL
                 const youtubeUrl = res.data.meals[0].strYoutube;
@@ -38,14 +39,14 @@ export function DishItemCard({ dish }: {dish: any}){
     };
 
     function getIngredients(){
-        let ingList: string[] = [];
+        let ingredientArray: string[] = [];
         let n: number = 1
         const dish = dishInfo[0]
         while(dish[`strIngredient${n}`]){
-            ingList.push((dish[`strIngredient${n}`]))
+            ingredientArray.push("["+dish[`strMeasure${n}`].trimEnd()+"] "+dish[`strIngredient${n}`])
             n++;
         }
-        setIngredientList(ingList);
+        setIngredientList(ingredientArray);
     }
 
     function handleClick() {
@@ -68,48 +69,37 @@ export function DishItemCard({ dish }: {dish: any}){
                 <img src={dish.strMealThumb} alt={dish.strMeal} className="w-[15em] h-auto rounded-[10%]" />
                 <h2 className="text-center m-0 w-[240px] h-auto">{dish.strMeal}</h2>
             </a>
-
             {isModalOpen && dishInfo.length > 0 && (
-                <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)]">
-                    <div className="bg-[rgb(0,0,0)] p-6 rounded relative flex">
-                    <div className="w-[560px] h-[600px] bg-black overflow-hidden rounded-lg flex flex-col">
-  {/* Scrollable Section (including video) */}
-  <div className="flex-1 overflow-y-auto w-full px-4 py-2 text-white flex flex-col items-center">
-    
-    {/* YouTube Link */}
-    <a className="text-xl text-blue-400 mb-2" href={dishInfo[0].strYoutube} target="_blank" rel="noopener noreferrer">
-      YouTube Link
-    </a>
-
-    {/* YouTube Video */}
-    {videoLink ? (
-      <iframe className="w-full h-[400px] my-4" src={videoLink} allowFullScreen />
-    ) : (
-      <p className="text-[red]">No YouTube link available for this dish.</p>
-    )}
-
-    {/* Meal Title */}
-    <div className="text-xl text-center mb-2">{dishInfo[0].strMeal}</div>
-
-    {/* Source Link */}
-    <a href={dishInfo[0].strSource} className="text-xl text-blue-400 block mb-2" target="_blank" rel="noopener noreferrer">
-      Learn More...
-    </a>
-
-    {/* Ingredient List */}
-    {ingredientList.map((ing, index) => (
-      <div key={index} className="text-center">{ing}</div>
-    ))}
-
-  </div>
-</div>
-
-                        <button
-                        onClick={closeModal}
-                        className="bg-blue-500 text-white px-4 py-2 rounded absolute top-3 right-3"
-                        >
+                <div className="fixed inset-0 flex items-center justify-center bg-[rgba(0,0,0,0.4)]" onClick={closeModal}>
+                    <div className="bg-[rgb(0,0,0)] p-6 rounded relative flex w-3/4 h-3/4">
+                        <div className="w-full h-full bg-black overflow-hidden rounded-lg flex flex-col">
+                            {/* Scrollable content */}
+                            <div className="overflow-y-auto px-4 py-2 text-white flex flex-col items-center gap-2 h-full m-0">
+                                <div className="text-4xl font-bold text-center flex-shrink-0">{dishInfo[0].strMeal}</div>
+                                <div className="w-4/5 h-7/8 flex-shrink-0">
+                                    {videoLink ? (
+                                    <iframe className="w-full h-full rounded-2xl" src={videoLink} allowFullScreen />
+                                    ) : (
+                                    <p className="text-[red]">No YouTube link available for this dish.</p>
+                                    )}
+                                </div>
+                                <a className="text-xl text-blue-400 flex-shrink-0" href={dishInfo[0].strYoutube} target="_blank" rel="noopener noreferrer">
+                                    YouTube Link
+                                </a>
+                                <div className="inline-block text-left mt-10 mb-10">
+                                    <div className="text-xl font-bold">Ingredient List:</div>
+                                    {ingredientList.map((ing, index) => (
+                                    <div key={index}>{ing}</div>
+                                    ))}
+                                </div>
+                                <a href={dishInfo[0].strSource} className="text-xl text-blue-400 flex-shrink-0" target="_blank" rel="noopener noreferrer">
+                                    Learn More...
+                                </a>
+                            </div>
+                        </div>
+                    <button onClick={closeModal} className="bg-blue-500 text-white px-4 py-2 rounded absolute top-3 left-3">
                         Close
-                        </button>
+                    </button>
                     </div>
                 </div>
             )}
