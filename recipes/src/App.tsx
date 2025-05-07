@@ -23,8 +23,8 @@ function App() {
   const Home = () => {
     return (
         <div className="flex items-center justify-center flex-col gap-10 px-2 text-[#3A0519]">
-            <h1 className="text-3xl font-bold">Welcome to <span className="text-[#5bf49b]">Disheasy!</span></h1>
-            <div className="w-full flex items-center justify-center flex-col bg-[#e8e0c7] p-8 roboto-mono gap-12">
+            <h1 className="text-3xl font-bold">Welcome to <span className="text-[#be0432]">Disheasy!</span></h1>
+            <div className="w-full flex items-center justify-center flex-col bg-[#e8e0c7] p-8 roboto-mono gap-12 rounded-2xl mb-4">
               <div className="text-2xl text-center mx-4">
                 Your one stop shop for finding different types of dishes around the world! 🌍
               </div>
@@ -45,7 +45,7 @@ function App() {
                 Want to get more detailed information? Then click <b>"Learn more"</b> at the bottom of the inside of the dish to go to a website with even more detailed information!
               </div>
               <div className="text-2xl text-center mx-4">
-                With over <b className="text-red-600">304</b> kinds of diverse dishes to choose from! 🍝🍣🥙
+                With over <b className="text-orange-400">304</b> kinds of diverse dishes to choose from! 🍝🍣🥙
               </div>
             </div>
         </div>
