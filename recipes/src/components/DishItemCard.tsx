@@ -75,6 +75,8 @@ export function DishItemCard({ dish }: {dish: any}){
                     <div className="bg-[#e2d8bf] p-6 relative flex lg:w-3/4 lg:h-3/4 w-[95vw] h-[80vh] rounded-[16px] py-12">
                         <div className="w-full h-full overflow-hidden flex flex-col">
                             <div className="overflow-y-auto pl-1 pr-2 py-1 text-white flex flex-col items-center gap-2 h-full m-0" onClick={(e) => e.stopPropagation()}>
+                                {/* Divider Line */}
+                                <div className="border-b-4 border-[#d3b38a] w-full mt-4"></div>
                                 <div className="text-3xl font-bold text-center flex-shrink-0 text-[#3A0519]">{dishInfo[0].strMeal}</div>
                                 <div className="w-full h-3/5 flex-shrink-0 flex items-center justify-center">
                                     {videoLink ? (
@@ -86,18 +88,24 @@ export function DishItemCard({ dish }: {dish: any}){
                                 <a className="text-xl text-blue-400 flex-shrink-0" href={dishInfo[0].strYoutube} target="_blank" rel="noopener noreferrer">
                                     YouTube Link
                                 </a>
+                                {/* Divider Line */}
+                                <div className="border-b-4 border-[#d3b38a] w-full mt-4"></div>
                                 <div className="text-2xl font-bold text-[#3A0519] roboto-mono my-4">Ingredient List</div>
-                                <div className="w-full flex items-center justify-center bg-[#e8e5dc] p-8 roboto-mono h-full">
+                                <div className="w-full flex items-center justify-center bg-[#e8e5dc] p-8 roboto-mono">
                                     <div className="text-left text-black" >
                                         {ingredientList.map((ing, index) => (
                                         <div key={index} className="text-xl">{ing}</div>
                                         ))}
                                     </div>
                                 </div>
+                                {/* Divider Line */}
+                                <div className="border-b-4 border-[#d3b38a] w-full mt-4"></div>
                                 <div className="text-xl font-bold text-[#3A0519] roboto-mono my-4">Cooking Instructions:</div>
                                 <div className="text-black w-full bg-[#e8e5dc] p-8 roboto-mono">
                                     {dishInfo[0].strInstructions}
                                 </div>
+                                {/* Divider Line */}
+                                <div className="border-b-4 border-[#d3b38a] w-full mt-4"></div>
                                 <a href={dishInfo[0].strSource} className="text-xl text-blue-400 flex-shrink-0" target="_blank" rel="noopener noreferrer">
                                     Click here to learn more...
                                 </a>

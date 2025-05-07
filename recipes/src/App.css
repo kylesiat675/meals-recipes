@@ -1,16 +1,3 @@
-/*NavLink CSS*/
-.link {
-  color: #3A0519;
-  font-weight: bold;
-}
-.link:hover{
-  color:#EEEAD8;
-}
-
-.active-link, .active-link:hover{
-  color: #EEEAD8; /* Keeps the color when active */
-  font-weight: bold;
-}
 
 a {
   font-weight: 500;
@@ -43,6 +30,21 @@ button:focus-visible {
   font-weight: 700;
 }
 
+/*Font family from Google API*/
 .roboto-mono {
   font-family: 'Roboto Mono', monospace;
+}
+
+/*NavLink CSS*/
+.link {
+  color: #3A0519;
+  font-weight: bold;
+}
+.link:hover{
+  color:#EEEAD8;
+}
+
+.active-link, .active-link:hover{
+  color: #EEEAD8;
+  font-weight: bold;
 }
