@@ -1,4 +1,4 @@
-# meals-recipes
+# Disheasy: A dish/recipe finder web application that has all relevant information on the dish
  
 ## Application that lists out dishes using filters such as ingredients, cuisines and categories
 ## Using [themealdb.com/api](https://www.themealdb.com/api.php) as the API for fetching the meals/dishes
